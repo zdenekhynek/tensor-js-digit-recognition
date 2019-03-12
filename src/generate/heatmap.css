@@ -1,0 +1,7 @@
+.heatmap {
+	width: 902px;
+	height: 726px;
+	margin-top: 14px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border: 1px solid black;
+}

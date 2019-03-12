@@ -1,0 +1,28 @@
+.thumb {
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+	border-radius: 6px;
+}
+
+.imageWrap {
+	width: 200px;
+	height: 150px;	
+	overflow: hidden;
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+	transform: scale(25) translate(-84.5px, 67.2px);
+}
+
+.number {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 0 0 6px 0;
+	padding: 5px 10px;
+	background: linear-gradient(60deg, #ffa726, #fb8c00);
+  box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+}

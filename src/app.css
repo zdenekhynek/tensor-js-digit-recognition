@@ -1,0 +1,11 @@
+.app {
+	overflow: hidden;
+	width: 100%;
+	min-height: 100vh;	
+	padding: 0 50px;
+	background: #673AB7;  /* fallback for old browsers */
+	background: linear-gradient(to top, #673AB7, #512DA8);
+	color: #fff;
+	box-sizing: border-box;
+}
+
