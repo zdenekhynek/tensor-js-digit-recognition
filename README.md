@@ -17,7 +17,7 @@ We're interested in finding out top-right-most number.
 
 ```
 npm i
-``
+```
 
 ## Usage
 
