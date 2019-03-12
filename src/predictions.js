@@ -40,6 +40,9 @@ export function predict(model, loadedImage) {
   return model.predict(loadedImage);
 }
 
+/*
+  Use pretrained model to make prediction about the digit in the passed pixel data
+*/
 export async function makeImageDataPrediction(pretrainedModel, trainedModel, imageData) {
   const imageTensor = tf.fromPixels(imageData);
   
@@ -59,6 +62,10 @@ export async function predictNumber(pretrainedModel, trainedModel, numbersImageD
   );
 }
 
+/*
+  Predict 4 digits in the frame using pretrained model,
+  concat result
+*/
 export async function predictFrame(imagePath, pretrainedModel, model) {
 	const imageData = await getImageDataFromPath(imagePath);
   
@@ -72,6 +79,10 @@ export async function predictFrame(imagePath, pretrainedModel, model) {
   return { imagePath, number };
 }
 
+/*
+  Predict digits in a series of frames using the passed 
+  pretrained model
+*/
 export function predictFrames(framesPaths, pretrainedModel, model) {
   return framesPaths.map(async(framePath) => {
     return predictFrame(framePath, pretrainedModel, model);

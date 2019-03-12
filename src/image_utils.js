@@ -28,6 +28,10 @@ export function loadImage(src) {
   });
 }
 
+/*  
+  Crop image to squqare, as that's 
+  required by tensorflow.js
+*/
 export function cropImageToSquare(img) {
   const width = img.shape[0];
   const height = img.shape[1];
@@ -40,14 +44,21 @@ export function cropImageToSquare(img) {
   const startingWidth = (width - shorterSide) / 2;
   const endingHeight = startingHeight + shorterSide;
   const endingWidth = startingWidth + shorterSide;
+
    // return image data cropped to those points
   return img.slice([startingWidth, startingHeight, 0], [endingWidth, endingHeight, 3]);
 }
 
+/*
+  Convert image data into tensor
+*/
 export function imageDataToTensor(imageData) {
   return tf.fromPixels(imageData);
 }
 
+/*
+  Load img into canvas and return image data
+*/
 export async function getImageDataFromPath(imgPath) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -59,9 +70,11 @@ export async function getImageDataFromPath(imgPath) {
   ctx.drawImage(img, 0, 0 );
 
   return ctx;
-  //  return ctx.getImageData(0, 0, img.width, img.height);
 }
 
+/*
+  Load and process all the images and predict their number
+*/
 export function loadImages(images, pretrainedModel) {
   let promise = Promise.resolve();
   for (let i = 0; i < images.length; i++) {

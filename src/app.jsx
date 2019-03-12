@@ -13,12 +13,12 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-
 		this.state = { agentMsg: '' };
 		this.onAgentUpdate = this.onAgentUpdate.bind(this);
 	}
 
 	onAgentUpdate(agentMsg) {
+		//	update message next to the robot icon 
 		this.setState({ agentMsg });
 	}
 

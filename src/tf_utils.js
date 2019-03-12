@@ -49,6 +49,9 @@ export function loadMobilenet() {
 	return tf.loadModel('https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json');
 }
 
+/*
+  Decapitate mobile net
+*/
 export function buildPretrainedModel() {
   return loadMobilenet().then((mobilenet) => {
     const layer = mobilenet.getLayer('conv_pw_13_relu');
@@ -59,6 +62,10 @@ export function buildPretrainedModel() {
   });
 }
 
+/*
+  Create tensorflow model 
+  with given layers
+*/
 export function getModel(numberOfClasses) {
   const model = tf.sequential({
     layers: [
@@ -87,6 +94,14 @@ export function getModel(numberOfClasses) {
   return model;
 }
 
+
+/*
+  Load pretrained model produced on the '/train' route from a JSON 
+  stored in the 'dist/model/pretrained-model.json' folder.
+
+  The model JSON also depends on pretrained-model.weights.bin 
+  which should be stored in the same folder
+*/
 export async function loadPretrainedModel() {
 	const pretrainedModel = await buildPretrainedModel();
   const model = await tf.loadModel('./model/pretrained-model.json');
@@ -100,6 +115,10 @@ export async function loadPretrainedModel() {
   return { pretrainedModel, model };
 }
 
+/*
+  Pretrain model, test its accuracy and serve json files
+  for browser to download.
+*/
 export async function trainModel(getTrainingData, getTestData, numClasses, onCallback) {
   const { images, labels } = getTrainingData();
 
@@ -127,7 +146,6 @@ export async function trainModel(getTrainingData, getTestData, numClasses, onCal
 
       const { images: testImages, labels: testLabels } = getTestData();
       const testXs = await loadImages(testImages, pretrainedModel);
-
 
       const testYs = addLabels(testLabels);
 
