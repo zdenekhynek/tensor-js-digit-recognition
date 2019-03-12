@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cp -R ./data ./dist && parcel index.html"
   },
-  "author": "",
+  "author": "zdenek.hynek@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.1.5",
